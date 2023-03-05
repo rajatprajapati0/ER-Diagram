@@ -36,9 +36,13 @@ SELECT * FROM Employee_Payroll WHERE START BETWEEN CAST('2020-02-03'
 AS DATE) AND CAST('2023-01-01' AS DATE);
 
 --UC6*****
-
+                                                               ----ADDING GENDER FIELD
 ALTER TABLE Employee_Payroll ADD GENDER CHAR(1) ;
 UPDATE Employee_Payroll SET GENDER ='M' WHERE NAME='RAJAT' OR NAME = 'DEEPAK' or NAME= 'NARESH';
 INSERT INTO  Employee_Payroll (ID,NAME,SALARY,START)VALUES
 (4,'JANAVI',60000,'2023-02-01');
 UPDATE Employee_Payroll SET GENDER ='F' WHERE NAME='JANAVI';
+
+--UC7
+
+SELECT SUM(SALARY) AS Total_Employee_Salary FROM Employee_Payroll WHERE GENDER='M' GROUP BY GENDER; 
